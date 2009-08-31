@@ -20,6 +20,11 @@ describe Anemone do
     Anemone.options.discard_page_bodies.should == true
     Anemone.options.delay.should == 0
     Anemone.options.user_agent.should == 'test'
+  end    
+  
+  it "should accept options of obeying Robots.txt for the crawl" do
+    Anemone.crawl(SPEC_DOMAIN, :obey_robots_dot_txt => true)
+    Anemone.options.obey_robots_dot_txt.should == true  
   end
   
   it "should use 1 thread if a delay is requested" do

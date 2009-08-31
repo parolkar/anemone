@@ -30,8 +30,19 @@ module Anemone
     Anemone.options.discard_page_bodies ||= false
 
     #by default, identify self as Anemone/VERSION
-    Anemone.options.user_agent ||= "Anemone/#{self::VERSION}"   
-
+    Anemone.options.user_agent ||= "Anemone/#{self::VERSION}" 
+    
+    #Obey Robots.txt 
+    Anemone.options.obey_robots_dot_txt ||= false 
+    if Anemone.options.obey_robots_dot_txt == true
+      begin      
+        require 'obey_robots_dot_txt'
+      rescue LoadError
+        warn "You need the 'obey_robots_dot_txt' gem installed, (you may run sudo gem install parolkar-obey_robots_dot_txt --source http://gems.github.com )"
+        exit
+      end
+    end  
+    
     #no delay between requests by default
     Anemone.options.delay ||= 0
     

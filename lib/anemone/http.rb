@@ -18,7 +18,7 @@ module Anemone
       while response.is_a?(Net::HTTPRedirection) and limit > 0
           loc = URI(response['location'])
           loc = url.merge(loc) if loc.relative?
-          response = get_response(loc)
+          response = (Anemone.options.obey_robots_dot_txt ? (Net::HTTP.get_obeying_robots(loc)) : get_response(loc) )
           limit -= 1
       end
 

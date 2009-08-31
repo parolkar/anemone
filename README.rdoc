@@ -9,7 +9,8 @@ write your own specialized spider tasks quickly and easily.
 * Multi-threaded design for high performance
 * Tracks 301 HTTP redirects to understand a page's aliases
 * Built-in BFS algorithm for determining page depth
-* Allows exclusion of URLs based on regular expressions
+* Allows exclusion of URLs based on regular expressions 
+* Can crawl obeying robots.txt
 
 == REQUIREMENTS
 * nokogiri
